@@ -1,0 +1,2654 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a2746" />
+    <meta name="description" content="Local-first AI film festival strategy desk for discovery, matching, prep packs, and submission tracking." />
+    <title>LaurelPilot</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="stylesheet" href="/styles.css?v=pipeline-20260507-1" />
+  </head>
+  <body>
+    <div class="app-shell" id="app">
+      <header class="mobile-topbar">
+        <div class="brand-lockup">
+          <img class="brand-logo" src="/assets/laurelpilot-logo.svg?v=pipeline-20260507-1" alt="LaurelPilot" />
+        </div>
+        <button class="icon-button" id="menu-button" type="button" aria-label="Open filters">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </header>
+
+      <aside class="sidebar" id="sidebar" aria-label="Navigation and filters">
+        <div class="sidebar-scroll">
+          <div class="sidebar-head">
+            <div class="brand-lockup">
+              <img class="brand-logo" src="/assets/laurelpilot-logo.svg?v=pipeline-20260507-1" alt="LaurelPilot" />
+            </div>
+            <button class="icon-button mobile-only" id="close-menu-button" type="button" aria-label="Close filters">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 6l12 12M18 6L6 18" />
+              </svg>
+            </button>
+          </div>
+
+          <nav class="nav-tabs" aria-label="Primary">
+            <button class="nav-tab active" type="button" data-view="product">Product</button>
+            <button class="nav-tab" type="button" data-view="onboarding">Start</button>
+            <button class="nav-tab" type="button" data-view="demo">Demo</button>
+            <button class="nav-tab" type="button" data-view="films">Films</button>
+            <button class="nav-tab" type="button" data-view="install">Install</button>
+            <button class="nav-tab" type="button" data-view="launch">Launch QA</button>
+            <button class="nav-tab" type="button" data-view="device">Device Lab</button>
+            <button class="nav-tab" type="button" data-view="feedback">Feedback</button>
+            <button class="nav-tab" type="button" data-view="roadmap">Roadmap</button>
+            <button class="nav-tab" type="button" data-view="guide">Guide</button>
+            <button class="nav-tab" type="button" data-view="settings">Settings</button>
+            <button class="nav-tab" type="button" data-view="access">Access</button>
+            <button class="nav-tab" type="button" data-view="discover">Discover</button>
+            <button class="nav-tab" type="button" data-view="proof">Proof</button>
+            <button class="nav-tab" type="button" data-view="calendar">Calendar</button>
+            <button class="nav-tab" type="button" data-view="season">Season Plan</button>
+            <button class="nav-tab" type="button" data-view="intelligence">Intelligence</button>
+            <button class="nav-tab" type="button" data-view="match">Match</button>
+            <button class="nav-tab" type="button" data-view="prep">Prep Pack</button>
+            <button class="nav-tab" type="button" data-view="pipeline">Pipeline</button>
+            <button class="nav-tab" type="button" data-view="submissions">My Submissions</button>
+            <button class="nav-tab" type="button" data-view="scout">Scout</button>
+            <button class="nav-tab" type="button" data-view="watchlist">Watchlist</button>
+            <button class="nav-tab" type="button" data-view="vault">Data Vault</button>
+            <button class="nav-tab" type="button" data-view="import">Import Leads</button>
+            <button class="nav-tab" type="button" data-view="radar">Radar</button>
+            <button class="nav-tab" type="button" data-view="submit">Submit Festival</button>
+          </nav>
+
+          <section class="filter-panel" aria-label="Festival filters">
+            <div class="section-heading">
+              <h2>Filters</h2>
+              <button id="clear-filters" class="text-button" type="button">Clear</button>
+            </div>
+
+            <label for="search-input">Search festivals</label>
+            <input id="search-input" type="search" placeholder="Name, country, keyword..." />
+
+            <label for="status-filter">Festival status</label>
+            <select id="status-filter">
+              <option value="All">All</option>
+              <option value="Accepting Submissions">Accepting Submissions</option>
+              <option value="Not Yet Open">Not Yet Open</option>
+              <option value="Closed">Closed</option>
+            </select>
+
+            <label for="deadline-filter">Deadline</label>
+            <select id="deadline-filter">
+              <option value="30">Next 30 days</option>
+              <option value="90">Next 3 months</option>
+              <option value="180">Next 6 months</option>
+              <option value="any">Any time</option>
+            </select>
+
+            <label for="region-filter">Location</label>
+            <select id="region-filter">
+              <option value="All">All regions</option>
+              <option value="North America">North America</option>
+              <option value="Europe">Europe</option>
+              <option value="Asia">Asia</option>
+              <option value="Online">Online</option>
+            </select>
+
+            <label for="type-filter">Content type</label>
+            <select id="type-filter">
+              <option value="All">All types</option>
+              <option value="Animation">Animation</option>
+              <option value="Live Action">Live Action</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="Documentary">Documentary</option>
+              <option value="Experimental">Experimental</option>
+              <option value="Music Video">Music Video</option>
+            </select>
+
+            <label for="runtime-filter">Runtime</label>
+            <select id="runtime-filter">
+              <option value="All">Any runtime</option>
+              <option value="short">Short: under 10 min</option>
+              <option value="medium">Medium: 10-30 min</option>
+              <option value="long">Long: over 30 min</option>
+            </select>
+
+            <div class="toggle-row">
+              <label for="prize-toggle">Prizes only</label>
+              <input id="prize-toggle" type="checkbox" />
+            </div>
+
+            <label for="prize-filter">Minimum prize money</label>
+            <input id="prize-filter" type="range" min="0" max="60000" step="5000" value="0" />
+            <div class="range-value" id="prize-value">$0+</div>
+
+            <div class="toggle-row">
+              <label for="recurring-toggle">Recurring only</label>
+              <input id="recurring-toggle" type="checkbox" />
+            </div>
+          </section>
+
+          <section class="account-card" aria-label="Pricing preview">
+            <span>Local access</span>
+            <strong id="account-plan-name">Preview</strong>
+            <p id="account-plan-copy">Preview mode</p>
+          </section>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <section class="view active" id="product-view" aria-label="Product overview and pricing">
+          <div class="product-hero">
+            <div class="product-copy">
+              <img class="hero-logo" src="/assets/laurelpilot-logo.svg?v=pipeline-20260507-1" alt="LaurelPilot" />
+              <span class="build-marker">Launch access: $29/year</span>
+              <p class="eyebrow">AI film festival strategy desk</p>
+              <h1>Find better-fit festivals, prepare smarter submissions, and avoid wasting fees.</h1>
+              <p>
+                LaurelPilot combines festival discovery, deadline tracking, fit scoring, prep packets,
+                red-flag checks, and a review queue for newly discovered or organizer-submitted festivals.
+              </p>
+              <div class="hero-actions">
+                <button class="primary-button js-go-view" type="button" data-view-target="onboarding">Start Setup</button>
+                <button class="secondary-button js-go-view" type="button" data-view-target="match">Match a Film</button>
+              </div>
+            </div>
+            <div class="product-board" aria-label="Product preview">
+              <div class="board-header">
+                <span>Today's strategy brief</span>
+                <strong>8 festivals tracked</strong>
+              </div>
+              <div class="board-row">
+                <span class="signal-dot gold"></span>
+                <div>
+                  <strong>Runway AI Film Festival</strong>
+                  <p>Strong fit for polished AI-native shorts. 29 days left.</p>
+                </div>
+                <span class="mini-score">92</span>
+              </div>
+              <div class="board-row">
+                <span class="signal-dot teal"></span>
+                <div>
+                  <strong>LifeArt AI Film Festival</strong>
+                  <p>Best for art-forward hybrid films. Prep pack ready.</p>
+                </div>
+                <span class="mini-score">84</span>
+              </div>
+              <div class="board-row caution">
+                <span class="signal-dot coral"></span>
+                <div>
+                  <strong>Global AI Laurel Circuit</strong>
+                  <p>Rejected by Radar: no organizer, vague awards, pressure discounts.</p>
+                </div>
+                <span class="mini-score">31</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="premium-grid">
+            <article>
+              <span>Festival intelligence</span>
+              <h2>Not just links. Context.</h2>
+              <p>Each record includes fit notes, strategy guidance, rules, green flags, red flags, and community-style signals.</p>
+            </article>
+            <article>
+              <span>Submission planning</span>
+              <h2>Know where your film belongs.</h2>
+              <p>Rank festivals against your film profile by runtime, type, goals, fee tolerance, region, and premiere risk.</p>
+            </article>
+            <article>
+              <span>Prep packs</span>
+              <h2>Turn research into action.</h2>
+              <p>Create a festival-specific checklist and positioning packet before you pay a submission fee.</p>
+            </article>
+          </div>
+
+          <section class="pricing-panel" aria-label="Pricing">
+            <div>
+              <p class="eyebrow">Launch pricing</p>
+              <h2>$29/year for filmmakers</h2>
+              <p>Directory access, matching, Radar intelligence, deadline exports, submission tracking, prep packs, and CSV/TXT exports.</p>
+            </div>
+            <button class="primary-button js-go-view" type="button" data-view-target="access">View Access Plans</button>
+          </section>
+        </section>
+
+        <section class="view" id="onboarding-view" aria-label="First-run onboarding">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">First-run setup</p>
+              <h1>Set Up Your Festival Strategy</h1>
+              <p class="toolbar-note">Create a film profile, review starter matches, and choose the first workspace to open.</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="onboard-sample" class="secondary-button" type="button">Use Sample Film</button>
+              <button id="onboard-save" class="primary-button" type="button">Save Setup</button>
+              <button id="onboard-complete" class="secondary-button" type="button">Complete</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Onboarding summary">
+            <article>
+              <span>Progress</span>
+              <strong id="onboard-progress">0%</strong>
+            </article>
+            <article>
+              <span>Steps</span>
+              <strong id="onboard-step-count">0/4</strong>
+            </article>
+            <article>
+              <span>Strong fits</span>
+              <strong id="onboard-strong-count">0</strong>
+            </article>
+            <article>
+              <span>Act soon</span>
+              <strong id="onboard-urgent-count">0</strong>
+            </article>
+          </div>
+
+          <div class="prep-layout onboarding-layout">
+            <form class="prep-form onboarding-form" id="onboarding-form">
+              <label for="onboard-title">Film title</label>
+              <input id="onboard-title" type="text" placeholder="The Last Render" />
+
+              <div class="form-grid">
+                <div>
+                  <label for="onboard-runtime">Runtime in minutes</label>
+                  <input id="onboard-runtime" type="number" min="1" max="180" value="8" />
+                </div>
+                <div>
+                  <label for="onboard-type">Primary content type</label>
+                  <select id="onboard-type">
+                    <option>Animation</option>
+                    <option>Live Action</option>
+                    <option>Hybrid</option>
+                    <option>Documentary</option>
+                    <option>Experimental</option>
+                    <option>Music Video</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div>
+                  <label for="onboard-goal">Primary goal</label>
+                  <select id="onboard-goal">
+                    <option>Prestige</option>
+                    <option>Networking</option>
+                    <option>Prize money</option>
+                    <option>Audience feedback</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="onboard-region">Target region</label>
+                  <select id="onboard-region">
+                    <option>Any</option>
+                    <option>North America</option>
+                    <option>Europe</option>
+                    <option>Asia</option>
+                    <option>Online</option>
+                  </select>
+                </div>
+              </div>
+
+              <label for="onboard-mode">Preferred mode</label>
+              <select id="onboard-mode">
+                <option>Any</option>
+                <option>Physical</option>
+                <option>Hybrid</option>
+                <option>Online</option>
+              </select>
+
+              <label for="onboard-fee">Maximum entry fee</label>
+              <input id="onboard-fee" type="range" min="0" max="75" step="5" value="35" />
+              <div class="range-value" id="onboard-fee-value">$35 max</div>
+
+              <div class="toggle-row">
+                <label for="onboard-public">Film is already public</label>
+                <input id="onboard-public" type="checkbox" />
+              </div>
+
+              <div class="action-row">
+                <button id="onboard-reset" class="secondary-button" type="button">Reset Progress</button>
+              </div>
+              <p id="onboard-message" class="section-message" role="status"></p>
+            </form>
+
+            <article class="packet-preview onboarding-panel">
+              <p class="eyebrow">Next step</p>
+              <h2 id="onboard-next-step">Film profile</h2>
+              <div class="onboarding-steps" id="onboarding-steps"></div>
+              <h3>Starter Matches</h3>
+              <div class="onboarding-matches" id="onboarding-matches"></div>
+              <h3>Suggested Actions</h3>
+              <div class="reason-list" id="onboarding-actions"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="demo-view" aria-label="Demo workspace">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Demo mode</p>
+              <h1>Load a Complete Sample Workspace</h1>
+              <p class="toolbar-note">Load a polished sample workspace.<br />Films, targets, prep, pipeline.<br />QA, feedback, and roadmap data.</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="demo-load" class="primary-button" type="button">Load Demo Workspace</button>
+              <button id="demo-copy" class="secondary-button" type="button">Copy Tour</button>
+              <button id="demo-reset" class="secondary-button" type="button">Reset Demo Records</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Demo workspace summary">
+            <article>
+              <span>Sections</span>
+              <strong id="demo-sections">0</strong>
+            </article>
+            <article>
+              <span>Records</span>
+              <strong id="demo-records">0</strong>
+            </article>
+            <article>
+              <span>Active film</span>
+              <strong id="demo-film">Signal Bloom</strong>
+            </article>
+            <article>
+              <span>Tour stops</span>
+              <strong id="demo-tour-count">0</strong>
+            </article>
+          </div>
+
+          <div class="demo-hero">
+            <div>
+              <p class="eyebrow">Presenter workspace</p>
+              <h2 id="demo-message">Demo readiness will appear here.</h2>
+              <div class="reason-list demo-actions" id="demo-actions"></div>
+            </div>
+            <div class="demo-spotlight" aria-hidden="true">
+              <span>Signal Bloom</span>
+              <strong>Festival Launch</strong>
+            </div>
+          </div>
+
+          <div class="demo-layout">
+            <article class="packet-preview demo-panel">
+              <p class="eyebrow">What gets loaded</p>
+              <h2>A full workspace instead of an empty shell.</h2>
+              <div class="demo-section-grid" id="demo-section-grid"></div>
+            </article>
+
+            <aside class="demo-side">
+              <article class="packet-preview demo-panel">
+                <p class="eyebrow">Walkthrough route</p>
+                <h2>Use this order when showing the app.</h2>
+                <div class="demo-tour-list" id="demo-tour"></div>
+              </article>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="films-view" aria-label="Film library">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Film library</p>
+              <h1>Manage Film Projects</h1>
+              <p class="toolbar-note">Keep multiple films local, set one active, and let Match, Prep Pack, and Strategy Tips follow that film.</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="film-new" class="secondary-button" type="button">New Film</button>
+              <button id="film-save" class="primary-button" type="button">Save Film</button>
+              <button id="film-use-match" class="secondary-button" type="button">Open Match</button>
+              <button id="film-copy" class="secondary-button" type="button">Copy</button>
+              <button id="film-download" class="secondary-button" type="button">Download</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Film library summary">
+            <article>
+              <span>Projects</span>
+              <strong id="film-project-count">0</strong>
+            </article>
+            <article>
+              <span>Active Film</span>
+              <strong id="film-active-title">Untitled</strong>
+            </article>
+            <article>
+              <span>Strong Fits</span>
+              <strong id="film-strong-fits">0</strong>
+            </article>
+            <article>
+              <span>Submitted</span>
+              <strong id="film-submitted-count">0</strong>
+            </article>
+          </div>
+
+          <div class="radar-intro film-intro">
+            <div>
+              <p class="eyebrow">Active project</p>
+              <h2>One film drives the whole workspace.</h2>
+              <p id="film-library-message">Choose an active film to power matching and prep.</p>
+            </div>
+            <div class="reason-list film-actions" id="film-actions"></div>
+          </div>
+
+          <div class="film-layout">
+            <form class="prep-form film-form" id="film-form">
+              <input id="film-project-id" type="hidden" />
+
+              <label for="film-title">Film title</label>
+              <input id="film-title" type="text" placeholder="The Last Render" />
+
+              <div class="form-grid">
+                <div>
+                  <label for="film-stage">Project stage</label>
+                  <select id="film-stage">
+                    <option>Development</option>
+                    <option>Festival strategy</option>
+                    <option>Submitting</option>
+                    <option>Submitted</option>
+                    <option>Released</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="film-runtime">Runtime in minutes</label>
+                  <input id="film-runtime" type="number" min="1" max="180" value="8" />
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div>
+                  <label for="film-type">Primary content type</label>
+                  <select id="film-type">
+                    <option>Animation</option>
+                    <option>Live Action</option>
+                    <option>Hybrid</option>
+                    <option>Documentary</option>
+                    <option>Experimental</option>
+                    <option>Music Video</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="film-goal">Primary goal</label>
+                  <select id="film-goal">
+                    <option>Prestige</option>
+                    <option>Networking</option>
+                    <option>Prize money</option>
+                    <option>Audience feedback</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div>
+                  <label for="film-region">Target region</label>
+                  <select id="film-region">
+                    <option>Any</option>
+                    <option>North America</option>
+                    <option>Europe</option>
+                    <option>Asia</option>
+                    <option>Online</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="film-mode">Preferred mode</label>
+                  <select id="film-mode">
+                    <option>Any</option>
+                    <option>Physical</option>
+                    <option>Hybrid</option>
+                    <option>Online</option>
+                  </select>
+                </div>
+              </div>
+
+              <label for="film-fee">Maximum entry fee</label>
+              <input id="film-fee" type="range" min="0" max="150" step="5" value="35" />
+              <div class="range-value" id="film-fee-value">$35 max</div>
+
+              <div class="toggle-row">
+                <label for="film-public">Film is already public</label>
+                <input id="film-public" type="checkbox" />
+              </div>
+
+              <label for="film-logline">Logline</label>
+              <textarea id="film-logline" placeholder="A one-sentence hook for the film."></textarea>
+
+              <label for="film-notes">Private project notes</label>
+              <textarea id="film-notes" placeholder="Festival goals, materials status, premiere concerns, or strategy notes."></textarea>
+            </form>
+
+            <aside class="film-side">
+              <article class="packet-preview film-panel">
+                <p class="eyebrow">Project shelf</p>
+                <h2>Films in this browser</h2>
+                <div class="film-card-list" id="film-cards"></div>
+              </article>
+
+              <article class="packet-preview film-panel">
+                <p class="eyebrow">Active match preview</p>
+                <h2>Best paths right now</h2>
+                <div class="film-match-list" id="film-top-matches"></div>
+              </article>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="install-view" aria-label="Install and offline app shell">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Offline app shell</p>
+              <h1>Install LaurelPilot</h1>
+              <p class="toolbar-note">Cache the strategy desk locally so your festival workspace still opens without a connection.</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="install-run-check" class="secondary-button" type="button">Run Readiness Check</button>
+              <button id="install-button" class="primary-button" type="button">Waiting for Browser</button>
+              <button id="install-clear-log" class="secondary-button" type="button">Clear Log</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Install readiness summary">
+            <article>
+              <span>Readiness</span>
+              <strong id="install-readiness">0%</strong>
+            </article>
+            <article>
+              <span>Checks Ready</span>
+              <strong id="install-ready-count">0/5</strong>
+            </article>
+            <article>
+              <span>Mode</span>
+              <strong id="install-mode">Browser Tab</strong>
+            </article>
+            <article>
+              <span>Cached Files</span>
+              <strong id="install-cache-count">0/8</strong>
+            </article>
+          </div>
+
+          <div class="radar-intro install-intro">
+            <div>
+              <p class="eyebrow">Local-first workspace</p>
+              <h2>Make the product feel like a serious desktop utility, even before deployment.</h2>
+              <p id="install-message">Install readiness will appear after the app shell check runs.</p>
+            </div>
+            <div class="badge-row">
+              <span class="badge blue" id="install-online">Online</span>
+              <span class="badge green">Static app shell</span>
+              <span class="badge amber">No external API dependency</span>
+            </div>
+          </div>
+
+          <div class="prep-layout install-layout">
+            <article class="packet-preview install-panel">
+              <p class="eyebrow">Readiness checks</p>
+              <h2>Install Requirements</h2>
+              <p>These checks confirm that the browser can cache LaurelPilot and present it as an installable local workspace.</p>
+              <div class="install-check-grid" id="install-checklist"></div>
+            </article>
+
+            <article class="packet-preview install-panel">
+              <p class="eyebrow">Cached shell files</p>
+              <h2>Everything the browser stores for offline launch.</h2>
+              <p>The app shell is intentionally static: product code, styles, festival seed data, logo, manifest, and worker.</p>
+              <div class="reason-list install-asset-list" id="install-asset-list"></div>
+            </article>
+          </div>
+
+          <div class="review-header">
+            <div>
+              <p class="eyebrow">Install activity</p>
+              <h2>Local App Log</h2>
+            </div>
+            <span class="badge blue">Browser only</span>
+          </div>
+          <div class="audit-list" id="install-log"></div>
+        </section>
+
+        <section class="view" id="launch-view" aria-label="Launch readiness and product QA">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Launch readiness</p>
+              <h1>Product QA Dashboard</h1>
+              <p class="toolbar-note">Score the local product before showing it to filmmakers, creators, or early subscribers.</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="launch-run" class="primary-button" type="button">Run Product Audit</button>
+              <button id="launch-copy" class="secondary-button" type="button">Copy Brief</button>
+              <button id="launch-download" class="secondary-button" type="button">Download Checklist</button>
+              <button id="launch-clear-log" class="secondary-button" type="button">Clear Log</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Launch readiness summary">
+            <article>
+              <span>Launch Score</span>
+              <strong id="launch-score">0/100</strong>
+            </article>
+            <article>
+              <span>Stage</span>
+              <strong id="launch-stage">Foundation</strong>
+            </article>
+            <article>
+              <span>Ready Areas</span>
+              <strong id="launch-ready-count">0/8</strong>
+            </article>
+            <article>
+              <span>Blockers</span>
+              <strong id="launch-blocker-count">0</strong>
+            </article>
+          </div>
+
+          <div class="radar-intro launch-intro">
+            <div>
+              <p class="eyebrow">Ship discipline</p>
+              <h2>Use this as the internal go/no-go board before a private beta.</h2>
+              <p id="launch-message">The product audit checks the directory, matching, curation, watchlist, access, backups, and offline shell.</p>
+            </div>
+            <div class="launch-dial" aria-hidden="true">
+              <span></span>
+              <strong>QA</strong>
+            </div>
+          </div>
+
+          <div class="launch-layout">
+            <article class="packet-preview launch-panel">
+              <p class="eyebrow">Readiness checks</p>
+              <h2>What has to hold up before launch.</h2>
+              <div class="launch-check-grid" id="launch-checklist"></div>
+            </article>
+
+            <aside class="launch-side">
+              <article class="packet-preview launch-panel">
+                <p class="eyebrow">Next actions</p>
+                <h2>Highest-impact work</h2>
+                <div class="reason-list launch-action-list" id="launch-actions"></div>
+              </article>
+
+              <article class="packet-preview launch-panel">
+                <p class="eyebrow">Product metrics</p>
+                <h2>Current workspace snapshot</h2>
+                <div class="launch-metrics" id="launch-metrics"></div>
+              </article>
+            </aside>
+          </div>
+
+          <div class="review-header">
+            <div>
+              <p class="eyebrow">Audit trail</p>
+              <h2>Launch Audit Log</h2>
+            </div>
+            <span class="badge blue">Local only</span>
+          </div>
+          <div class="audit-list" id="launch-log"></div>
+        </section>
+
+        <section class="view" id="device-view" aria-label="Device lab and responsive QA">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Responsive QA desk</p>
+              <h1>Device Lab</h1>
+              <p class="toolbar-note">Track polish across desktop, tablet, and mobile.</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="device-copy" class="secondary-button" type="button">Copy Report</button>
+              <button id="device-download" class="primary-button" type="button">Download CSV</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Device Lab summary">
+            <article>
+              <span>Device score</span>
+              <strong id="device-score">0/100</strong>
+            </article>
+            <article>
+              <span>Open issues</span>
+              <strong id="device-open">0</strong>
+            </article>
+            <article>
+              <span>Blockers</span>
+              <strong id="device-blockers">0</strong>
+            </article>
+            <article>
+              <span>Coverage</span>
+              <strong id="device-coverage">0%</strong>
+            </article>
+          </div>
+
+          <div class="device-lab-layout">
+            <article class="device-command-panel">
+              <p class="eyebrow">QA status</p>
+              <h2 id="device-message">Device readiness will appear here.</h2>
+              <div class="device-profile-grid" id="device-profile-grid" aria-label="Device profiles"></div>
+            </article>
+
+            <form class="device-form" id="device-form">
+              <input id="device-issue-id" type="hidden" />
+
+              <label for="device-view-select">Section</label>
+              <select id="device-view-select"></select>
+
+              <label for="device-profile">Device profile</label>
+              <select id="device-profile"></select>
+
+              <div class="form-grid">
+                <div>
+                  <label for="device-severity">Severity</label>
+                  <select id="device-severity">
+                    <option>Polish</option>
+                    <option>Important</option>
+                    <option>Blocker</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="device-status">Status</label>
+                  <select id="device-status">
+                    <option>Open</option>
+                    <option>Fixed</option>
+                  </select>
+                </div>
+              </div>
+
+              <label for="device-title">QA note</label>
+              <input id="device-title" type="text" placeholder="Mobile cards need cleaner button spacing" />
+
+              <label for="device-notes">Details</label>
+              <textarea id="device-notes" placeholder="What you saw, where it happened, and what should change before launch."></textarea>
+
+              <div class="device-form-actions">
+                <button id="device-save" class="primary-button" type="button">Save Note</button>
+                <button id="device-mark-fixed" class="secondary-button" type="button">Mark Fixed</button>
+                <button id="device-clear" class="secondary-button" type="button">Clear</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="device-review-layout">
+            <section class="device-checklist" aria-label="Responsive QA checklist">
+              <div class="section-heading">
+                <p class="eyebrow">Readiness checklist</p>
+                <h2>Premium Surface Checks</h2>
+              </div>
+              <div id="device-checklist"></div>
+            </section>
+
+            <section class="device-issues" aria-label="Responsive QA issue log">
+              <div class="section-heading">
+                <p class="eyebrow">Issue log</p>
+                <h2>Device Notes</h2>
+              </div>
+              <div id="device-issue-list"></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="feedback-view" aria-label="Beta feedback desk">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Private beta command desk</p>
+              <h1>Beta Feedback Desk</h1>
+              <p class="toolbar-note">Track beta notes and launch blockers.</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="feedback-copy" class="secondary-button" type="button">Copy Report</button>
+              <button id="feedback-download" class="primary-button" type="button">Download CSV</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Beta feedback summary">
+            <article>
+              <span>Feedback score</span>
+              <strong id="feedback-score">0/100</strong>
+            </article>
+            <article>
+              <span>Open notes</span>
+              <strong id="feedback-open">0</strong>
+            </article>
+            <article>
+              <span>Blockers</span>
+              <strong id="feedback-blockers">0</strong>
+            </article>
+            <article>
+              <span>Fixed</span>
+              <strong id="feedback-fixed">0</strong>
+            </article>
+          </div>
+
+          <div class="feedback-layout">
+            <article class="feedback-command-panel">
+              <p class="eyebrow">Beta signal</p>
+              <h2 id="feedback-message">Feedback readiness will appear here.</h2>
+              <div class="feedback-actions" id="feedback-actions" aria-label="Feedback recommendations"></div>
+              <div class="feedback-theme-grid" id="feedback-themes" aria-label="Feedback themes"></div>
+            </article>
+
+            <form class="feedback-form" id="feedback-form">
+              <input id="feedback-item-id" type="hidden" />
+
+              <label for="feedback-source">Source</label>
+              <input id="feedback-source" type="text" placeholder="Tester name, beta group, email thread, call note..." />
+
+              <label for="feedback-view-select">Section</label>
+              <select id="feedback-view-select"></select>
+
+              <div class="form-grid">
+                <div>
+                  <label for="feedback-type">Type</label>
+                  <select id="feedback-type"></select>
+                </div>
+                <div>
+                  <label for="feedback-priority">Priority</label>
+                  <select id="feedback-priority"></select>
+                </div>
+                <div>
+                  <label for="feedback-status">Status</label>
+                  <select id="feedback-status"></select>
+                </div>
+              </div>
+
+              <label for="feedback-title">Feedback note</label>
+              <input id="feedback-title" type="text" placeholder="The pricing page needs stronger proof" />
+
+              <label for="feedback-notes">Details</label>
+              <textarea id="feedback-notes" placeholder="What the tester said, why it matters, and what decision it should drive."></textarea>
+
+              <div class="feedback-form-actions">
+                <button id="feedback-save" class="primary-button" type="button">Save Note</button>
+                <button id="feedback-plan" class="secondary-button" type="button">Plan</button>
+                <button id="feedback-resolve" class="secondary-button" type="button">Fixed</button>
+                <button id="feedback-clear" class="secondary-button" type="button">Clear</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="feedback-board" id="feedback-board" aria-live="polite"></div>
+        </section>
+
+        <section class="view" id="roadmap-view" aria-label="Roadmap and changelog center">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Release planning desk</p>
+              <h1>Roadmap and Changelog</h1>
+              <p class="toolbar-note">Track planned and shipped work.</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="roadmap-copy" class="secondary-button" type="button">Copy Report</button>
+              <button id="roadmap-download" class="primary-button" type="button">Download CSV</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Roadmap summary">
+            <article>
+              <span>Roadmap score</span>
+              <strong id="roadmap-score">0/100</strong>
+            </article>
+            <article>
+              <span>Active</span>
+              <strong id="roadmap-active">0</strong>
+            </article>
+            <article>
+              <span>Shipped</span>
+              <strong id="roadmap-shipped">0</strong>
+            </article>
+            <article>
+              <span>Releases</span>
+              <strong id="roadmap-releases">0</strong>
+            </article>
+          </div>
+
+          <div class="roadmap-layout">
+            <article class="roadmap-command-panel">
+              <p class="eyebrow">Release signal</p>
+              <h2 id="roadmap-message">Roadmap readiness will appear here.</h2>
+              <div class="roadmap-actions" id="roadmap-actions" aria-label="Roadmap recommendations"></div>
+            </article>
+
+            <form class="roadmap-form" id="roadmap-form">
+              <input id="roadmap-item-id" type="hidden" />
+
+              <label for="roadmap-title">Roadmap item</label>
+              <input id="roadmap-title" type="text" placeholder="Roadmap and Changelog Center" />
+
+              <div class="form-grid">
+                <div>
+                  <label for="roadmap-type">Type</label>
+                  <select id="roadmap-type"></select>
+                </div>
+                <div>
+                  <label for="roadmap-status">Status</label>
+                  <select id="roadmap-status"></select>
+                </div>
+                <div>
+                  <label for="roadmap-impact">Impact</label>
+                  <select id="roadmap-impact"></select>
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div>
+                  <label for="roadmap-release">Release</label>
+                  <input id="roadmap-release" type="text" placeholder="Beta 0.8" />
+                </div>
+                <div>
+                  <label for="roadmap-owner">Owner</label>
+                  <input id="roadmap-owner" type="text" placeholder="Raymond" />
+                </div>
+              </div>
+
+              <label for="roadmap-notes">Release note</label>
+              <textarea id="roadmap-notes" placeholder="What changed, why it matters, and what beta testers should know."></textarea>
+
+              <div class="roadmap-form-actions">
+                <button id="roadmap-save" class="primary-button" type="button">Save Item</button>
+                <button id="roadmap-ship" class="secondary-button" type="button">Ship</button>
+                <button id="roadmap-pause" class="secondary-button" type="button">Pause</button>
+                <button id="roadmap-clear" class="secondary-button" type="button">Clear</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="roadmap-split">
+            <section>
+              <div class="section-heading">
+                <p class="eyebrow">Roadmap board</p>
+                <h2>What is planned, moving, and paused</h2>
+              </div>
+              <div class="roadmap-board" id="roadmap-board" aria-live="polite"></div>
+            </section>
+
+            <aside class="roadmap-changelog-panel">
+              <div class="section-heading">
+                <p class="eyebrow">Changelog</p>
+                <h2>What shipped</h2>
+              </div>
+              <div class="roadmap-changelog" id="roadmap-changelog"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="guide-view" aria-label="Product guide and filmmaker workflows">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Product guide</p>
+              <h1>How LaurelPilot Helps a Filmmaker Move</h1>
+              <p class="toolbar-note">A practical, filmmaker-facing guide for choosing the right workflow and understanding what each workspace is worth.</p>
+            </div>
+            <div class="toolbar-actions">
+              <label class="sort-control" for="guide-workflow">
+                Workflow
+                <select id="guide-workflow">
+                  <option value="first-submission">Plan a first submission</option>
+                  <option value="scout-festivals">Grow the festival database</option>
+                  <option value="private-beta">Prepare for private beta</option>
+                </select>
+              </label>
+              <label class="sort-control" for="guide-phase">
+                Phase
+                <select id="guide-phase">
+                  <option>Explore</option>
+                  <option selected>Submit</option>
+                  <option>Maintain</option>
+                  <option>Launch</option>
+                </select>
+              </label>
+              <button id="guide-copy" class="secondary-button" type="button">Copy Guide</button>
+              <button id="guide-download" class="primary-button" type="button">Download Guide</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Guide summary">
+            <article>
+              <span>Guide Progress</span>
+              <strong id="guide-progress">0%</strong>
+            </article>
+            <article>
+              <span>Next Move</span>
+              <strong id="guide-next-step">Profile</strong>
+            </article>
+            <article>
+              <span>Launch Stage</span>
+              <strong id="guide-stage">Not checked</strong>
+            </article>
+            <article>
+              <span>Festival Records</span>
+              <strong id="guide-records">0</strong>
+            </article>
+          </div>
+
+          <div class="radar-intro guide-intro">
+            <div>
+              <p class="eyebrow">Filmmaker value</p>
+              <h2>Every screen should answer one question: does this help me submit smarter?</h2>
+              <p id="guide-message">Choose a workflow to see the recommended path through the product.</p>
+            </div>
+            <div class="guide-hero-stats" id="guide-hero-stats"></div>
+          </div>
+
+          <div class="guide-layout">
+            <article class="packet-preview guide-panel">
+              <p class="eyebrow">Workflow path</p>
+              <h2>The moves that matter</h2>
+              <div class="guide-step-list" id="guide-steps"></div>
+            </article>
+
+            <aside class="guide-side">
+              <article class="packet-preview guide-panel">
+                <p class="eyebrow">Product tools</p>
+                <h2>Why each workspace exists</h2>
+                <div class="guide-tool-grid" id="guide-tools"></div>
+              </article>
+
+              <article class="packet-preview guide-panel">
+                <p class="eyebrow">Recommendations</p>
+                <h2>Keep the value obvious</h2>
+                <div class="reason-list guide-recommendations" id="guide-recommendations"></div>
+              </article>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="settings-view" aria-label="Settings and preferences">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Settings</p>
+              <h1>Workspace Preferences</h1>
+              <p class="toolbar-note">Set local defaults for the way LaurelPilot opens, ranks festivals, and seeds a new film profile.</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="settings-save" class="primary-button" type="button">Save Preferences</button>
+              <button id="settings-apply-profile" class="secondary-button" type="button">Seed Profile</button>
+              <button id="settings-copy" class="secondary-button" type="button">Copy</button>
+              <button id="settings-download" class="secondary-button" type="button">Download</button>
+              <button id="settings-reset" class="secondary-button" type="button">Reset</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Settings summary">
+            <article>
+              <span>Start View</span>
+              <strong id="settings-start-view-metric">Product</strong>
+            </article>
+            <article>
+              <span>Product Mode</span>
+              <strong id="settings-mode-metric">Filmmaker</strong>
+            </article>
+            <article>
+              <span>Target Region</span>
+              <strong id="settings-region-metric">Any</strong>
+            </article>
+            <article>
+              <span>Fee Ceiling</span>
+              <strong id="settings-fee-metric">$35</strong>
+            </article>
+          </div>
+
+          <div class="radar-intro settings-intro">
+            <div>
+              <p class="eyebrow">Local control</p>
+              <h2>Make the app open and rank festivals around the way you actually work.</h2>
+              <p id="settings-message">Preferences stay in this browser and can be exported through the Data Vault.</p>
+            </div>
+            <div class="settings-profile-preview" id="settings-profile-preview"></div>
+          </div>
+
+          <div class="settings-layout">
+            <form class="prep-form settings-form" id="settings-form">
+              <div class="form-grid">
+                <div>
+                  <label for="settings-start-view">Default start view</label>
+                  <select id="settings-start-view">
+                    <option value="product">Product</option>
+                    <option value="onboarding">Start</option>
+                    <option value="demo">Demo</option>
+                    <option value="films">Films</option>
+                    <option value="guide">Guide</option>
+                    <option value="discover">Discover</option>
+                    <option value="proof">Proof</option>
+                    <option value="calendar">Calendar</option>
+                    <option value="season">Season Plan</option>
+                    <option value="match">Match</option>
+                    <option value="launch">Launch QA</option>
+                    <option value="device">Device Lab</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="roadmap">Roadmap</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="settings-product-mode">Product mode</label>
+                  <select id="settings-product-mode">
+                    <option>Filmmaker</option>
+                    <option>Curator</option>
+                    <option>Launch QA</option>
+                    <option>Studio</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div>
+                  <label for="settings-region">Default target region</label>
+                  <select id="settings-region">
+                    <option>Any</option>
+                    <option>North America</option>
+                    <option>Europe</option>
+                    <option>Asia</option>
+                    <option>Online</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="settings-mode">Default festival mode</label>
+                  <select id="settings-mode">
+                    <option>Any</option>
+                    <option>Physical</option>
+                    <option>Hybrid</option>
+                    <option>Online</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div>
+                  <label for="settings-type">Default content type</label>
+                  <select id="settings-type">
+                    <option>Animation</option>
+                    <option>Live Action</option>
+                    <option>Hybrid</option>
+                    <option>Documentary</option>
+                    <option>Experimental</option>
+                    <option>Music Video</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="settings-goal">Default goal</label>
+                  <select id="settings-goal">
+                    <option>Prestige</option>
+                    <option>Networking</option>
+                    <option>Prize money</option>
+                    <option>Audience feedback</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div>
+                  <label for="settings-runtime">Default runtime in minutes</label>
+                  <input id="settings-runtime" type="number" min="1" max="180" value="8" />
+                </div>
+                <div>
+                  <label for="settings-fee">Maximum entry fee</label>
+                  <input id="settings-fee" type="range" min="0" max="150" step="5" value="35" />
+                  <div class="range-value" id="settings-fee-value">$35 max</div>
+                </div>
+              </div>
+
+              <div class="toggle-row">
+                <label for="settings-public">Allow already-public films by default</label>
+                <input id="settings-public" type="checkbox" />
+              </div>
+
+              <div class="toggle-row">
+                <label for="settings-local-only">Show local-only data reminders</label>
+                <input id="settings-local-only" type="checkbox" checked />
+              </div>
+
+              <div class="toggle-row">
+                <label for="settings-export-reminder">Show backup/export reminders</label>
+                <input id="settings-export-reminder" type="checkbox" checked />
+              </div>
+            </form>
+
+            <aside class="settings-side">
+              <article class="packet-preview settings-panel">
+                <p class="eyebrow">Preference summary</p>
+                <h2>Current defaults</h2>
+                <div class="settings-card-grid" id="settings-cards"></div>
+              </article>
+
+              <article class="packet-preview settings-panel">
+                <p class="eyebrow">Suggested actions</p>
+                <h2>Keep the workspace tidy</h2>
+                <div class="reason-list settings-actions" id="settings-actions"></div>
+              </article>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="access-view" aria-label="Local access and pricing">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Conversion desk</p>
+              <h1>Launch Access</h1>
+              <p class="toolbar-note">Preview the paid value story locally.</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="access-start-trial" class="secondary-button" type="button">Start Local Trial</button>
+              <button id="access-activate-launch" class="primary-button" type="button">Activate Launch Pass</button>
+              <button id="access-copy-brief" class="secondary-button" type="button">Copy Brief</button>
+              <button id="access-reset" class="secondary-button" type="button">Reset</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Access summary">
+            <article>
+              <span>Plan</span>
+              <strong id="access-plan-name">Preview</strong>
+            </article>
+            <article>
+              <span>Status</span>
+              <strong id="access-status">Preview</strong>
+            </article>
+            <article>
+              <span>Renewal / Trial</span>
+              <strong id="access-renewal">Upgrade</strong>
+            </article>
+            <article>
+              <span>Value Score</span>
+              <strong id="access-value-score">0/100</strong>
+            </article>
+            <article>
+              <span>Upgrade Lift</span>
+              <strong id="access-upgrade-lift">0 tools</strong>
+            </article>
+          </div>
+
+          <div class="access-conversion-hero">
+            <div class="access-conversion-copy">
+              <p class="eyebrow">Paywall preview</p>
+              <h2 id="access-message">Preview mode shows the value ladder while everything stays local to the browser.</h2>
+              <div class="reason-list access-conversion-actions" id="access-conversion-actions"></div>
+            </div>
+            <div class="access-value-card">
+              <span id="access-value-tier">Strong</span>
+              <strong id="access-hours-saved">0+ hours/year</strong>
+              <p id="access-monthly-value">$0/month equivalent</p>
+              <button id="access-download-brief" class="secondary-button" type="button">Download Brief</button>
+            </div>
+          </div>
+
+          <section class="trial-flight-panel" aria-label="Local trial onboarding">
+            <div class="trial-flight-head">
+              <div>
+                <p class="eyebrow">Trial flight deck</p>
+                <h2 id="trial-message">Start the local trial to unlock the paid walkthrough.</h2>
+              </div>
+              <div class="trial-flight-actions">
+                <span class="badge blue"><strong id="trial-progress">0%</strong> complete</span>
+                <button id="trial-copy" class="secondary-button" type="button">Copy Trial Plan</button>
+                <button id="trial-reset" class="secondary-button" type="button">Reset Tour</button>
+              </div>
+            </div>
+            <div class="trial-stat-grid" aria-label="Trial summary">
+              <article>
+                <span>Next Step</span>
+                <strong id="trial-next-step">Proof</strong>
+              </article>
+              <article>
+                <span>Trial Days</span>
+                <strong id="trial-days-left">0</strong>
+              </article>
+              <article>
+                <span>Visited</span>
+                <strong id="trial-visited">0/4</strong>
+              </article>
+              <article>
+                <span>Pipeline</span>
+                <strong id="trial-pipeline-count">0</strong>
+              </article>
+            </div>
+            <div class="trial-step-list" id="trial-step-list"></div>
+          </section>
+
+          <div class="access-preview-grid" id="access-preview-cards"></div>
+
+          <div class="access-proof-layout">
+            <section class="access-receipt-panel" aria-label="Subscriber receipt">
+              <div class="review-header">
+                <div>
+                  <p class="eyebrow">Subscriber receipt</p>
+                  <h2>What the paid pass is really buying</h2>
+                </div>
+                <span class="badge blue"><strong id="access-included">0</strong> enabled</span>
+              </div>
+              <div class="access-receipt-list" id="access-receipt-list"></div>
+            </section>
+            <section class="access-objection-panel" aria-label="Subscriber objections">
+              <p class="eyebrow">Objection handling</p>
+              <h2>Answer the doubts before checkout</h2>
+              <div class="access-objection-grid" id="access-objection-grid"></div>
+            </section>
+          </div>
+
+          <div class="pricing-grid" id="access-plan-grid"></div>
+
+          <div class="review-header">
+            <div>
+              <p class="eyebrow">Feature gates</p>
+              <h2>Included Features</h2>
+            </div>
+            <span class="badge amber"><strong id="access-locked">0</strong> locked</span>
+          </div>
+          <div class="feature-gate-grid" id="access-feature-grid"></div>
+        </section>
+
+        <section class="view" id="discover-view" aria-label="Festival discovery">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">AI film festival intelligence</p>
+              <h1 id="result-heading">Showing festivals</h1>
+            </div>
+            <div class="toolbar-actions">
+              <label class="sort-control" for="sort-select">
+                Sort
+                <select id="sort-select">
+                  <option value="deadline">Deadline</option>
+                  <option value="confidence">Confidence</option>
+                  <option value="prize">Prize money</option>
+                  <option value="fee">Entry fee</option>
+                </select>
+              </label>
+              <div class="segmented-control" aria-label="View mode">
+                <button class="active" type="button" data-display="table">Table</button>
+                <button type="button" data-display="cards">Cards</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Festival summary metrics">
+            <article>
+              <span>Accepting now</span>
+              <strong id="accepting-count">0</strong>
+            </article>
+            <article>
+              <span>Deadline risk</span>
+              <strong id="urgent-count">0</strong>
+            </article>
+            <article>
+              <span>Total prize pool</span>
+              <strong id="prize-total">$0</strong>
+            </article>
+            <article>
+              <span>High confidence</span>
+              <strong id="confidence-count">0</strong>
+            </article>
+          </div>
+
+          <div class="compare-bar hidden" id="compare-bar">
+            <span id="compare-copy">0 selected</span>
+            <button id="compare-button" class="secondary-button" type="button">Compare</button>
+            <button id="clear-compare-button" class="text-button" type="button">Clear</button>
+          </div>
+
+          <div class="festival-table-wrap" id="table-wrap">
+            <table class="festival-table">
+              <thead>
+                <tr>
+                  <th scope="col">Compare</th>
+                  <th scope="col">Festival</th>
+                  <th scope="col">Deadline</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Prize</th>
+                  <th scope="col">Duration</th>
+                  <th scope="col">Fit</th>
+                  <th scope="col">Source Proof</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="festival-table-body"></tbody>
+            </table>
+          </div>
+
+          <div class="festival-grid hidden" id="festival-grid"></div>
+        </section>
+
+        <section class="view" id="proof-view" aria-label="Source freshness and trust proof">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Source proof</p>
+              <h1>Festival Trust, <br class="mobile-title-break" />Freshness, and Data Quality</h1>
+              <p class="toolbar-note">Check source age, links, requirements, strategy depth, and enrichment gaps before launch.</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="proof-copy" class="secondary-button" type="button">Copy Proof</button>
+              <button id="proof-download" class="primary-button" type="button">Download Report</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Source proof summary">
+            <article>
+              <span>Average trust</span>
+              <strong id="proof-average">0/100</strong>
+            </article>
+            <article>
+              <span>Verified</span>
+              <strong id="proof-verified">0</strong>
+            </article>
+            <article>
+              <span>Stale</span>
+              <strong id="proof-stale">0</strong>
+            </article>
+            <article>
+              <span>Needs review</span>
+              <strong id="proof-review">0</strong>
+            </article>
+            <article>
+              <span>Data quality</span>
+              <strong id="proof-quality">0/100</strong>
+            </article>
+            <article>
+              <span>Subscriber-ready</span>
+              <strong id="proof-ready">0</strong>
+            </article>
+            <article>
+              <span>Needs enrichment</span>
+              <strong id="proof-enrich">0</strong>
+            </article>
+            <article>
+              <span>Strategy depth</span>
+              <strong id="proof-strategy">0%</strong>
+            </article>
+          </div>
+
+          <div class="radar-intro proof-intro">
+            <div>
+              <p class="eyebrow">Premium data confidence</p>
+              <h2 id="proof-message">Source proof will appear here.</h2>
+              <div class="reason-list proof-actions" id="proof-actions"></div>
+            </div>
+          </div>
+
+          <div class="proof-list" id="proof-rows"></div>
+        </section>
+
+        <section class="view" id="calendar-view" aria-label="Deadline calendar planner">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Deadline calendar</p>
+              <h1>Submission Planning Calendar</h1>
+              <p class="toolbar-note">Group upcoming festivals by deadline month, estimate fee exposure, and export the whole batch locally.</p>
+            </div>
+            <div class="toolbar-actions">
+              <label class="sort-control" for="deadline-calendar-range">
+                Range
+                <select id="deadline-calendar-range">
+                  <option value="30">30 days</option>
+                  <option value="60">60 days</option>
+                  <option value="90" selected>90 days</option>
+                  <option value="180">180 days</option>
+                  <option value="all">All</option>
+                </select>
+              </label>
+              <label class="sort-control" for="deadline-calendar-status">
+                Status
+                <select id="deadline-calendar-status">
+                  <option>All</option>
+                  <option>Accepting Submissions</option>
+                  <option>Not Yet Open</option>
+                </select>
+              </label>
+              <label class="sort-control" for="deadline-calendar-region">
+                Region
+                <select id="deadline-calendar-region">
+                  <option>All</option>
+                  <option>North America</option>
+                  <option>Europe</option>
+                  <option>Asia</option>
+                  <option>Online</option>
+                </select>
+              </label>
+              <button id="deadline-calendar-copy" class="secondary-button" type="button">Copy Plan</button>
+              <button id="deadline-calendar-download-plan" class="secondary-button" type="button">Download TXT</button>
+              <button id="deadline-calendar-download-ics" class="primary-button" type="button">Export ICS</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Deadline calendar summary">
+            <article>
+              <span>Deadlines</span>
+              <strong id="deadline-calendar-count">0</strong>
+            </article>
+            <article>
+              <span>This Week</span>
+              <strong id="deadline-calendar-next7">0</strong>
+            </article>
+            <article>
+              <span>Fee Exposure</span>
+              <strong id="deadline-calendar-fees">$0</strong>
+            </article>
+            <article>
+              <span>Prize Upside</span>
+              <strong id="deadline-calendar-prizes">$0</strong>
+            </article>
+          </div>
+
+          <div class="radar-intro deadline-intro">
+            <div>
+              <p class="eyebrow">Submission season</p>
+              <h2>Turn scattered deadlines into a plan you can actually follow.</h2>
+              <p id="deadline-calendar-message">Calendar plan will appear after the local deadline report is built.</p>
+            </div>
+            <div class="reason-list deadline-actions-list" id="deadline-calendar-actions"></div>
+          </div>
+
+          <div class="deadline-layout">
+            <article class="packet-preview deadline-panel">
+              <p class="eyebrow">Monthly view</p>
+              <h2>Deadline timeline</h2>
+              <div class="deadline-timeline" id="deadline-calendar-timeline"></div>
+            </article>
+
+            <aside class="deadline-side">
+              <article class="packet-preview deadline-panel">
+                <p class="eyebrow">Month summary</p>
+                <h2>Planning load</h2>
+                <div class="deadline-month-grid" id="deadline-calendar-months"></div>
+              </article>
+
+              <article class="packet-preview deadline-panel">
+                <p class="eyebrow">Export notes</p>
+                <h2>Batch exports stay local.</h2>
+                <p>
+                  Copy creates a text plan. Download TXT saves the same plan. Export ICS creates calendar events
+                  for every deadline in the current view.
+                </p>
+              </article>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="season-view" aria-label="Submission season planner">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Submission season planner</p>
+              <h1>Build a Budget-Smart Festival Slate</h1>
+              <p class="toolbar-note">Turn fit scores, deadlines, entry fees, and goals into a practical plan for one film.</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="season-prep" class="primary-button" type="button">Start Top Prep</button>
+              <button id="season-copy" class="secondary-button" type="button">Copy Plan</button>
+              <button id="season-download" class="secondary-button" type="button">Download TXT</button>
+              <button id="season-pipeline" class="primary-button" type="button">Send to Pipeline</button>
+            </div>
+          </div>
+
+          <div class="season-control-panel">
+            <label for="season-budget">
+              Season budget
+              <input id="season-budget" type="range" min="0" max="500" step="10" value="120" />
+              <span id="season-budget-value">$120 budget</span>
+            </label>
+            <label for="season-targets">
+              Target count
+              <select id="season-targets">
+                <option value="3">3 festivals</option>
+                <option value="5" selected>5 festivals</option>
+                <option value="8">8 festivals</option>
+                <option value="10">10 festivals</option>
+              </select>
+            </label>
+            <label for="season-window">
+              Window
+              <select id="season-window">
+                <option value="60">60 days</option>
+                <option value="90">90 days</option>
+                <option value="180" selected>180 days</option>
+                <option value="365">12 months</option>
+                <option value="all">All upcoming</option>
+              </select>
+            </label>
+            <label for="season-strategy">
+              Strategy
+              <select id="season-strategy"></select>
+            </label>
+            <label for="season-region">
+              Region
+              <select id="season-region">
+                <option>Any</option>
+                <option>North America</option>
+                <option>Europe</option>
+                <option>Asia</option>
+                <option>Online</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="metric-grid" aria-label="Season plan summary">
+            <article>
+              <span>Selected</span>
+              <strong id="season-selected">0/5</strong>
+            </article>
+            <article>
+              <span>Planned Fees</span>
+              <strong id="season-fees">$0</strong>
+            </article>
+            <article>
+              <span>Average Fit</span>
+              <strong id="season-fit">0/100</strong>
+            </article>
+            <article>
+              <span>Prize Upside</span>
+              <strong id="season-prize">$0</strong>
+            </article>
+          </div>
+
+          <div class="season-hero-panel">
+            <div>
+              <p class="eyebrow">Decision plan</p>
+              <h2 id="season-message">Season plan will appear here.</h2>
+              <div class="reason-list season-actions" id="season-actions"></div>
+            </div>
+          </div>
+
+          <div class="season-layout">
+            <section class="season-slate" aria-label="Selected festival slate">
+              <div class="review-header">
+                <div>
+                  <p class="eyebrow">Priority slate</p>
+                  <h2>Where to spend attention first</h2>
+                </div>
+                <span class="badge blue">Local plan</span>
+              </div>
+              <div class="season-slate-list" id="season-slate"></div>
+            </section>
+
+            <aside class="season-side">
+              <article class="packet-preview season-panel season-handoff-panel">
+                <p class="eyebrow">Workflow handoff</p>
+                <h2>From plan to submission desk</h2>
+                <div class="season-handoff-list" id="season-handoff"></div>
+              </article>
+
+              <article class="packet-preview season-panel">
+                <p class="eyebrow">Deadline waves</p>
+                <h2>Monthly load</h2>
+                <div class="season-month-grid" id="season-months"></div>
+              </article>
+
+              <article class="packet-preview season-panel">
+                <p class="eyebrow">Skipped for discipline</p>
+                <h2>Good ideas, not this plan</h2>
+                <div class="season-skipped-list" id="season-skipped"></div>
+              </article>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="intelligence-view" aria-label="Festival intelligence">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Festival intelligence</p>
+              <h1>Strategy Tips</h1>
+              <p class="toolbar-note">Turn each listing into a submission brief with fit, risk, value, and positioning guidance.</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="copy-intelligence" class="secondary-button" type="button">Copy Brief</button>
+              <button id="download-intelligence" class="primary-button" type="button">Download TXT</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Intelligence summary">
+            <article>
+              <span>Match score</span>
+              <strong id="intel-match-score">0</strong>
+            </article>
+            <article>
+              <span>Risk checks</span>
+              <strong id="intel-risk-count">0</strong>
+            </article>
+            <article>
+              <span>Signal notes</span>
+              <strong id="intel-signal-count">0</strong>
+            </article>
+            <article>
+              <span>Prep moves</span>
+              <strong id="intel-prep-count">0</strong>
+            </article>
+          </div>
+
+          <div class="prep-layout intelligence-layout">
+            <form class="prep-form intelligence-controls" id="intelligence-form">
+              <label for="intelligence-festival">Target festival</label>
+              <select id="intelligence-festival"></select>
+
+              <label for="intelligence-focus">Strategic focus</label>
+              <select id="intelligence-focus">
+                <option>Acceptance strategy</option>
+                <option>Fee discipline</option>
+                <option>Prestige path</option>
+                <option>Fast shortlist</option>
+              </select>
+
+              <div class="radar-intro compact-intro">
+                <h2>Built from local festival records and your saved film profile.</h2>
+                <p>
+                  No outside calls are needed here. LaurelPilot translates stored festival facts,
+                  fit scoring, red flags, and community-style summaries into practical submission advice.
+                </p>
+              </div>
+
+              <div class="score-breakdown">
+                <span class="met">Fit <strong>runtime</strong></span>
+                <span class="met">Fit <strong>content type</strong></span>
+                <span class="met">Value <strong>fee vs goal</strong></span>
+                <span class="warning">Check <strong>premiere risk</strong></span>
+                <span class="warning">Check <strong>deadline pressure</strong></span>
+              </div>
+            </form>
+
+            <article class="intelligence-preview" id="intelligence-preview" aria-live="polite"></article>
+          </div>
+        </section>
+
+        <section class="view" id="match-view" aria-label="Festival matching">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Submission strategy</p>
+              <h1>Match a Film to Festivals</h1>
+            </div>
+            <button id="save-profile" class="primary-button" type="button">Save Film Profile</button>
+          </div>
+
+          <div class="match-layout">
+            <form class="match-form" id="match-form">
+              <label for="profile-title">Film title</label>
+              <input id="profile-title" type="text" placeholder="The Last Render" />
+
+              <label for="profile-runtime">Runtime in minutes</label>
+              <input id="profile-runtime" type="number" min="1" max="180" value="8" />
+
+              <label for="profile-type">Primary content type</label>
+              <select id="profile-type">
+                <option>Animation</option>
+                <option>Live Action</option>
+                <option>Hybrid</option>
+                <option>Documentary</option>
+                <option>Experimental</option>
+                <option>Music Video</option>
+              </select>
+
+              <label for="profile-goal">Primary goal</label>
+              <select id="profile-goal">
+                <option>Prestige</option>
+                <option>Networking</option>
+                <option>Prize money</option>
+                <option>Audience feedback</option>
+              </select>
+
+              <label for="profile-region">Target region</label>
+              <select id="profile-region">
+                <option>Any</option>
+                <option>North America</option>
+                <option>Europe</option>
+                <option>Asia</option>
+                <option>Online</option>
+              </select>
+
+              <label for="profile-mode">Preferred mode</label>
+              <select id="profile-mode">
+                <option>Any</option>
+                <option>Physical</option>
+                <option>Hybrid</option>
+                <option>Online</option>
+              </select>
+
+              <label for="profile-fee">Maximum entry fee</label>
+              <input id="profile-fee" type="range" min="0" max="75" step="5" value="35" />
+              <div class="range-value" id="profile-fee-value">$35 max</div>
+
+              <div class="toggle-row">
+                <label for="profile-public">Film is already public</label>
+                <input id="profile-public" type="checkbox" />
+              </div>
+            </form>
+
+            <div class="strategy-panel">
+              <div>
+                <p class="eyebrow">Strategy brief</p>
+                <h2 id="strategy-title">Your strongest festival path</h2>
+                <p id="strategy-copy">
+                  Fill out the film profile to rank festivals by fit, urgency, cost, and risk.
+                </p>
+              </div>
+              <div class="metric-grid compact" aria-label="Match metrics">
+                <article>
+                  <span>Strong fits</span>
+                  <strong id="match-strong">0</strong>
+                </article>
+                <article>
+                  <span>Action soon</span>
+                  <strong id="match-soon">0</strong>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div class="match-results" id="match-results"></div>
+        </section>
+
+        <section class="view" id="prep-view" aria-label="Submission prep pack">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Submission materials</p>
+              <h1>Build a Festival Prep Pack</h1>
+            </div>
+            <div class="toolbar-actions">
+              <button id="copy-packet" class="secondary-button" type="button">Copy Pack</button>
+              <button id="prep-pipeline" class="secondary-button" type="button">Send to Pipeline</button>
+              <button id="download-packet" class="primary-button" type="button">Download TXT</button>
+            </div>
+          </div>
+
+          <div class="prep-layout">
+            <form class="prep-form" id="prep-form">
+              <label for="prep-festival">Target festival</label>
+              <select id="prep-festival"></select>
+
+              <label for="prep-film-title">Film title</label>
+              <input id="prep-film-title" type="text" placeholder="The Last Render" />
+
+              <label for="prep-logline">Logline</label>
+              <textarea id="prep-logline" placeholder="A one-sentence hook for the film."></textarea>
+
+              <label for="prep-synopsis">Synopsis draft</label>
+              <textarea id="prep-synopsis" placeholder="Paste or draft your short synopsis here."></textarea>
+
+              <label for="prep-director">Director statement draft</label>
+              <textarea id="prep-director" placeholder="What the film is about, why it matters, and why AI was part of the process."></textarea>
+
+              <label for="prep-tools">AI tools disclosure</label>
+              <textarea id="prep-tools" placeholder="Runway, Midjourney, ElevenLabs, custom editing workflow, etc."></textarea>
+
+              <label for="prep-notes">Private notes</label>
+              <textarea id="prep-notes" placeholder="Fee reminders, premiere concerns, contact notes, or submission questions."></textarea>
+            </form>
+
+            <article class="packet-preview" id="packet-preview" aria-live="polite"></article>
+          </div>
+        </section>
+
+        <section class="view" id="pipeline-view" aria-label="Submission pipeline">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Submission command board</p>
+              <h1>Submission Pipeline</h1>
+              <p class="toolbar-note">Track every festival from research through final decision without leaving your local workspace.</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="pipeline-copy" class="secondary-button" type="button">Copy Board</button>
+              <button id="pipeline-download" class="primary-button" type="button">Download CSV</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Pipeline summary">
+            <article>
+              <span>Total cards</span>
+              <strong id="pipeline-total">0</strong>
+            </article>
+            <article>
+              <span>In prep</span>
+              <strong id="pipeline-preparing">0</strong>
+            </article>
+            <article>
+              <span>Submitted</span>
+              <strong id="pipeline-submitted">0</strong>
+            </article>
+            <article>
+              <span>Decisions</span>
+              <strong id="pipeline-decisions">0</strong>
+            </article>
+            <article>
+              <span>Focus now</span>
+              <strong id="pipeline-focus-now">0</strong>
+            </article>
+            <article>
+              <span>Fee exposure</span>
+              <strong id="pipeline-fee-exposure">$0</strong>
+            </article>
+            <article>
+              <span>Board score</span>
+              <strong id="pipeline-board-score">0</strong>
+            </article>
+          </div>
+
+          <div class="pipeline-intro">
+            <article class="pipeline-status-panel">
+              <p class="eyebrow">Board status</p>
+              <h2 id="pipeline-message">Pipeline cards will appear here.</h2>
+              <div class="pipeline-actions" id="pipeline-actions" aria-label="Pipeline recommendations"></div>
+            </article>
+
+            <form class="pipeline-form" id="pipeline-form">
+              <input id="pipeline-item-id" type="hidden" />
+
+              <label for="pipeline-festival">Festival</label>
+              <select id="pipeline-festival"></select>
+
+              <label for="pipeline-film-title">Film title</label>
+              <input id="pipeline-film-title" type="text" placeholder="The Last Render" />
+
+              <div class="form-grid">
+                <div>
+                  <label for="pipeline-stage">Stage</label>
+                  <select id="pipeline-stage">
+                    <option>Researching</option>
+                    <option>Preparing</option>
+                    <option>Submitted</option>
+                    <option>Accepted</option>
+                    <option>Rejected</option>
+                    <option>Follow Up</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="pipeline-priority">Priority</label>
+                  <select id="pipeline-priority">
+                    <option>Low</option>
+                    <option selected>Medium</option>
+                    <option>High</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="pipeline-due-date">Due date</label>
+                  <input id="pipeline-due-date" type="date" />
+                </div>
+              </div>
+
+              <label for="pipeline-notes">Notes</label>
+              <textarea id="pipeline-notes" placeholder="Materials missing, fee risk, judge fit, contact notes, follow-up plan..."></textarea>
+
+              <div class="pipeline-form-actions">
+                <button id="pipeline-save" class="primary-button" type="button">Save Card</button>
+                <button id="pipeline-add-prep" class="secondary-button" type="button">Add Current Prep</button>
+                <button id="pipeline-clear" class="secondary-button" type="button">Clear</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="pipeline-board" id="pipeline-board" aria-live="polite"></div>
+        </section>
+
+        <section class="view" id="submit-view" aria-label="Submit a festival">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Organizer intake</p>
+              <h1>Submit a Festival for Review</h1>
+            </div>
+            <button id="clear-intake" class="secondary-button" type="button">Clear Form</button>
+          </div>
+
+          <div class="intake-layout">
+            <form class="intake-form" id="intake-form">
+              <div class="form-grid">
+                <div>
+                  <label for="intake-name">Festival name</label>
+                  <input id="intake-name" type="text" placeholder="NeuraFrame AI Film Awards" required />
+                </div>
+                <div>
+                  <label for="intake-organizer">Organizer name</label>
+                  <input id="intake-organizer" type="text" placeholder="Organizer or company name" />
+                </div>
+                <div>
+                  <label for="intake-website">Official website</label>
+                  <input id="intake-website" type="url" placeholder="https://..." />
+                </div>
+                <div>
+                  <label for="intake-submit-url">Submission URL</label>
+                  <input id="intake-submit-url" type="url" placeholder="https://..." />
+                </div>
+                <div>
+                  <label for="intake-deadline">Submission deadline</label>
+                  <input id="intake-deadline" type="datetime-local" required />
+                </div>
+                <div>
+                  <label for="intake-event-date">Event date</label>
+                  <input id="intake-event-date" type="date" />
+                </div>
+                <div>
+                  <label for="intake-city">City</label>
+                  <input id="intake-city" type="text" placeholder="Online or city name" />
+                </div>
+                <div>
+                  <label for="intake-country">Country</label>
+                  <input id="intake-country" type="text" placeholder="Global, United States, Germany..." />
+                </div>
+                <div>
+                  <label for="intake-region">Region</label>
+                  <select id="intake-region">
+                    <option>North America</option>
+                    <option>Europe</option>
+                    <option>Asia</option>
+                    <option>Online</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="intake-mode">Festival mode</label>
+                  <select id="intake-mode">
+                    <option>Physical</option>
+                    <option>Hybrid</option>
+                    <option>Online</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="intake-fee">Entry fee</label>
+                  <input id="intake-fee" type="number" min="0" value="0" />
+                </div>
+                <div>
+                  <label for="intake-prize">Prize money</label>
+                  <input id="intake-prize" type="number" min="0" value="0" />
+                </div>
+                <div>
+                  <label for="intake-max-duration">Max runtime</label>
+                  <input id="intake-max-duration" type="number" min="1" value="10" />
+                </div>
+                <div>
+                  <label for="intake-frequency">Frequency</label>
+                  <select id="intake-frequency">
+                    <option>Annual</option>
+                    <option>Monthly</option>
+                    <option>Recurring</option>
+                    <option>One-Time</option>
+                  </select>
+                </div>
+              </div>
+
+              <label for="intake-description">Festival description</label>
+              <textarea id="intake-description" placeholder="What the festival is, who it serves, and what it screens."></textarea>
+
+              <label for="intake-types">Content types</label>
+              <input id="intake-types" type="text" placeholder="Animation, Hybrid, Experimental" />
+
+              <label for="intake-formats">Accepted formats</label>
+              <input id="intake-formats" type="text" placeholder="MP4, MOV, ProRes" />
+
+              <label for="intake-fit">Suggested filmmaker fit</label>
+              <textarea id="intake-fit" placeholder="Best for polished AI shorts, experimental animation, documentaries about AI, etc."></textarea>
+
+              <div class="quality-grid" aria-label="Quality signals">
+                <label><input id="intake-rules" type="checkbox" /> Clear rules page</label>
+                <label><input id="intake-fees-transparent" type="checkbox" /> Transparent fees</label>
+                <label><input id="intake-prize-details" type="checkbox" /> Prize breakdown</label>
+                <label><input id="intake-past-edition" type="checkbox" /> Past edition exists</label>
+                <label><input id="intake-discounts" type="checkbox" /> Aggressive discounts</label>
+              </div>
+
+              <button class="primary-button full-width" type="submit">Send to Radar Queue</button>
+              <p id="intake-message" class="section-message" role="status"></p>
+            </form>
+
+            <aside class="intake-preview">
+              <p class="eyebrow">How this helps</p>
+              <h2>Self-submitted festivals do not publish directly.</h2>
+              <p>
+                LaurelPilot scores each intake against legitimacy signals, warning signs, and submission usefulness.
+                Strong records can be approved into Discover; weak records stay out of the filmmaker-facing directory.
+              </p>
+              <div class="score-breakdown">
+                <span class="met">Official website <strong>+18</strong></span>
+                <span class="met">Submission link <strong>+14</strong></span>
+                <span class="met">Deadline <strong>+14</strong></span>
+                <span class="met">Named organizer <strong>+12</strong></span>
+                <span class="warning">No organizer <strong>-15</strong></span>
+                <span class="warning">Aggressive discounts <strong>-10</strong></span>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="submissions-view" aria-label="My submissions">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Personal tracker</p>
+              <h1>My Submissions</h1>
+            </div>
+            <button id="export-csv" class="secondary-button" type="button">Export CSV</button>
+          </div>
+
+          <div class="metric-grid" aria-label="Submission summary">
+            <article>
+              <span>Total submissions</span>
+              <strong id="submission-total">0</strong>
+            </article>
+            <article>
+              <span>Pending</span>
+              <strong id="submission-pending">0</strong>
+            </article>
+            <article>
+              <span>Accepted</span>
+              <strong id="submission-accepted">0</strong>
+            </article>
+            <article>
+              <span>Fees tracked</span>
+              <strong id="submission-fees">$0</strong>
+            </article>
+          </div>
+
+          <div class="submissions-list" id="submissions-list"></div>
+        </section>
+
+        <section class="view" id="scout-view" aria-label="Source scout">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Discovery engine</p>
+              <h1>Source Scout</h1>
+              <p id="scout-last-run" class="toolbar-note">Last scan pending</p>
+            </div>
+            <button id="run-scout" class="primary-button" type="button">Run Scout Scan</button>
+          </div>
+
+          <div class="metric-grid" aria-label="Scout summary">
+            <article>
+              <span>Leads found</span>
+              <strong id="scout-lead-count">0</strong>
+            </article>
+            <article>
+              <span>Ready signals</span>
+              <strong id="scout-ready-count">0</strong>
+            </article>
+            <article>
+              <span>Needs review</span>
+              <strong id="scout-review-count">0</strong>
+            </article>
+            <article>
+              <span>High risk</span>
+              <strong id="scout-risk-count">0</strong>
+            </article>
+          </div>
+
+          <div class="radar-intro">
+            <h2>Discovery sources feed Radar before anything reaches filmmakers.</h2>
+            <p>
+              Scout stages leads from watchlists, directories, community signals, and organizer intake.
+              Each lead is scored for source quality, useful facts, and warning signs before it can enter Discover.
+            </p>
+            <p id="scout-message" class="section-message" role="status"></p>
+          </div>
+
+          <div class="review-header">
+            <div>
+              <p class="eyebrow">Source health</p>
+              <h2>Watched Channels</h2>
+            </div>
+          </div>
+          <div class="radar-grid" id="scout-source-grid"></div>
+
+          <div class="review-header">
+            <div>
+              <p class="eyebrow">Lead inbox</p>
+              <h2>New Festival Leads</h2>
+            </div>
+          </div>
+          <div class="candidate-grid" id="scout-lead-grid"></div>
+        </section>
+
+        <section class="view" id="watchlist-view" aria-label="Source watchlist manager">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Source operations</p>
+              <h1>Source Watchlist</h1>
+              <p class="toolbar-note">Manage the sources, keywords, trust levels, and cadence that feed the curation engine.</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="watch-export" class="secondary-button" type="button">Export Watchlist</button>
+              <button id="watch-defaults" class="secondary-button" type="button">Load Defaults</button>
+              <button id="watch-run" class="primary-button" type="button">Record Watch Pass</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Watchlist summary">
+            <article>
+              <span>Active sources</span>
+              <strong id="watch-active-count">0</strong>
+            </article>
+            <article>
+              <span>Due now</span>
+              <strong id="watch-due-count">0</strong>
+            </article>
+            <article>
+              <span>High-trust sources</span>
+              <strong id="watch-trust-count">0</strong>
+            </article>
+            <article>
+              <span>Keywords tracked</span>
+              <strong id="watch-keyword-count">0</strong>
+            </article>
+          </div>
+
+          <div class="prep-layout">
+            <form class="prep-form watch-form" id="watch-form">
+              <input type="hidden" id="watch-source-id" />
+
+              <label for="watch-name">Source name</label>
+              <input id="watch-name" type="text" placeholder="Official festival page, directory, community thread..." required />
+
+              <label for="watch-url">Source URL or local queue</label>
+              <input id="watch-url" type="text" placeholder="https://example.com/festivals or local organizer inbox" />
+
+              <div class="form-grid">
+                <div>
+                  <label for="watch-type">Source type</label>
+                  <select id="watch-type">
+                    <option>Official festival site</option>
+                    <option>Submission platform search</option>
+                    <option>Festival directory</option>
+                    <option>Community discussion</option>
+                    <option>Newsletter or digest</option>
+                    <option>Organizer intake</option>
+                    <option>Manual research queue</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="watch-cadence">Cadence</label>
+                  <select id="watch-cadence">
+                    <option>Daily</option>
+                    <option>Twice weekly</option>
+                    <option>Weekly</option>
+                    <option>Monthly</option>
+                    <option>Manual</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div>
+                  <label for="watch-status">Status</label>
+                  <select id="watch-status">
+                    <option>Active</option>
+                    <option>Paused</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="watch-trust">Trust level <span id="watch-trust-value">3</span>/5</label>
+                  <input id="watch-trust" type="range" min="1" max="5" value="3" />
+                </div>
+              </div>
+
+              <label for="watch-keywords">Keywords</label>
+              <textarea id="watch-keywords" placeholder="AI film festival, AI short film submissions, generative cinema awards"></textarea>
+
+              <label for="watch-coverage">Coverage notes</label>
+              <textarea id="watch-coverage" placeholder="Deadlines, rules pages, prize updates, organizer details"></textarea>
+
+              <label for="watch-note">Internal note</label>
+              <textarea id="watch-note" placeholder="Why this source matters, what to verify, or what makes it risky."></textarea>
+
+              <div class="action-row">
+                <button class="primary-button" type="submit">Save Source</button>
+                <button id="watch-clear" class="secondary-button" type="button">Clear Form</button>
+              </div>
+              <p id="watch-message" class="section-message" role="status"></p>
+            </form>
+
+            <article class="packet-preview watch-plan">
+              <p class="eyebrow">Due scan plan</p>
+              <h2 id="watch-plan-title">No scan plan yet</h2>
+              <p id="watch-plan-copy">Sources due for review will appear here before they feed Scout and Radar.</p>
+              <div class="reason-list" id="watch-plan-list"></div>
+              <div class="audit-list compact" id="watch-run-log"></div>
+            </article>
+          </div>
+
+          <div class="review-header">
+            <div>
+              <p class="eyebrow">Managed sources</p>
+              <h2>Watched Sources</h2>
+            </div>
+          </div>
+          <div class="watch-grid" id="watchlist-grid"></div>
+        </section>
+
+        <section class="view" id="vault-view" aria-label="Local data vault">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Local data vault</p>
+              <h1>Backup & Restore</h1>
+              <p class="toolbar-note">Export or restore the full local workspace without accounts, sync, or external API calls.</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="vault-load" class="secondary-button" type="button">Load Current JSON</button>
+              <button id="vault-copy" class="secondary-button" type="button">Copy Backup</button>
+              <button id="vault-download" class="primary-button" type="button">Download Backup</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Vault summary">
+            <article>
+              <span>Sections</span>
+              <strong id="vault-section-count">0</strong>
+            </article>
+            <article>
+              <span>Records</span>
+              <strong id="vault-record-count">0</strong>
+            </article>
+            <article>
+              <span>Backup size</span>
+              <strong id="vault-size">0 KB</strong>
+            </article>
+            <article>
+              <span>Warnings</span>
+              <strong id="vault-warning-count">0</strong>
+            </article>
+          </div>
+
+          <div class="prep-layout vault-layout">
+            <form class="prep-form vault-form" id="vault-form">
+              <label for="vault-text">Backup JSON</label>
+              <textarea id="vault-text" placeholder="Paste a LaurelPilot backup JSON file here to preview it before restoring."></textarea>
+              <div class="action-row">
+                <button id="vault-parse" class="secondary-button" type="button">Parse Preview</button>
+                <button id="vault-restore" class="primary-button" type="button" disabled>Restore Backup</button>
+                <button id="vault-clear" class="secondary-button" type="button">Clear</button>
+              </div>
+              <p id="vault-message" class="section-message" role="status"></p>
+              <div class="score-breakdown">
+                <span class="met">Includes <strong>film profile</strong></span>
+                <span class="met">Includes <strong>submission tracker</strong></span>
+                <span class="met">Includes <strong>Radar decisions</strong></span>
+                <span class="met">Includes <strong>watchlist sources</strong></span>
+                <span class="warning">Restore <strong>replaces local data</strong></span>
+              </div>
+            </form>
+
+            <article class="packet-preview vault-preview">
+              <p class="eyebrow">Backup preview</p>
+              <div id="vault-summary"></div>
+            </article>
+          </div>
+
+          <div class="review-header">
+            <div>
+              <p class="eyebrow">Vault activity</p>
+              <h2>Export & Restore Log</h2>
+            </div>
+          </div>
+          <div class="audit-list" id="vault-log"></div>
+        </section>
+
+        <section class="view" id="import-view" aria-label="Import festival leads">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Local ingestion</p>
+              <h1>Import Festival Leads</h1>
+              <p class="toolbar-note">Paste JSON or CSV leads. Everything parses in the browser before Radar sees it.</p>
+            </div>
+            <div class="toolbar-actions">
+              <button id="sample-import" class="secondary-button" type="button">Load Sample</button>
+              <button id="parse-import" class="secondary-button" type="button">Parse Preview</button>
+              <button id="stage-clean-import" class="secondary-button" type="button">Stage Clean Leads</button>
+              <button id="send-import" class="primary-button" type="button">Stage All Reviewed</button>
+              <button id="copy-import-report" class="secondary-button" type="button">Copy Intake Report</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Import summary">
+            <article>
+              <span>Parsed leads</span>
+              <strong id="import-valid-count">0</strong>
+            </article>
+            <article>
+              <span>Clean</span>
+              <strong id="import-clean-count">0</strong>
+            </article>
+            <article>
+              <span>Needs review</span>
+              <strong id="import-review-count">0</strong>
+            </article>
+            <article>
+              <span>Duplicates</span>
+              <strong id="import-duplicate-count">0</strong>
+            </article>
+            <article>
+              <span>High risk</span>
+              <strong id="import-risk-count">0</strong>
+            </article>
+            <article>
+              <span>Import issues</span>
+              <strong id="import-error-count">0</strong>
+            </article>
+          </div>
+
+          <div class="prep-layout">
+            <form class="prep-form" id="import-form">
+              <label for="import-text">Lead import text</label>
+              <textarea id="import-text" class="import-textarea" placeholder="CSV headers: name,deadline,websiteUrl,submissionUrl,city,country,region,mode,entryFee,prizeMoney,maxDuration,contentTypes,formats,organizerName,rulesPage,transparentFees,prizeDetails"></textarea>
+              <div class="action-row">
+                <button id="clear-import" class="secondary-button" type="button">Clear Import</button>
+              </div>
+              <p id="import-message" class="section-message" role="status"></p>
+              <div class="score-breakdown">
+                <span class="met">Required <strong>name</strong></span>
+                <span class="met">Required <strong>deadline</strong></span>
+                <span class="met">Useful <strong>websiteUrl</strong></span>
+                <span class="met">Useful <strong>submissionUrl</strong></span>
+                <span class="met">Safe <strong>dedupe check</strong></span>
+                <span class="warning">Risk <strong>missing organizer</strong></span>
+                <span class="warning">Risk <strong>vague awards</strong></span>
+              </div>
+            </form>
+
+            <article class="packet-preview">
+              <p class="eyebrow">Supported formats</p>
+              <h2>CSV, TSV, JSON array, or a single JSON object.</h2>
+              <p>
+                Imported leads do not publish directly. They become Radar candidates with confidence,
+                review, and risk scoring first.
+              </p>
+              <div class="reason-list">
+                <span>CSV headers can use name, deadline, websiteUrl, submissionUrl, contentTypes, formats, prizeMoney, entryFee, organizerName, venueName, rulesPage, transparentFees, prizeDetails.</span>
+                <span>JSON can use the same fields as Scout leads, including evidence and warningSignals.</span>
+                <span>Bad rows are skipped with row-level errors so one messy lead does not block the whole import.</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="import-pipeline-panel">
+            <div>
+              <p class="eyebrow">Scraper run manifest</p>
+              <h2>Local bot output becomes a review packet.</h2>
+              <div class="reason-list" id="import-manifest"></div>
+            </div>
+            <div>
+              <p class="eyebrow">Next actions</p>
+              <div class="reason-list import-actions" id="import-actions"></div>
+            </div>
+          </div>
+
+          <div class="review-header">
+            <div>
+              <p class="eyebrow">Import preview</p>
+              <h2>Validated Leads</h2>
+            </div>
+          </div>
+          <div class="candidate-grid" id="import-preview"></div>
+        </section>
+
+        <section class="view" id="radar-view" aria-label="Automated radar">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Automated curation layer</p>
+              <h1>Festival Radar</h1>
+            </div>
+          </div>
+          <div class="radar-intro">
+            <h2>How LaurelPilot stays useful without becoming a scraper gamble</h2>
+            <p>
+              The product model is automated discovery plus confidence scoring. Bots find candidate festivals,
+              extract facts from permitted public sources, summarize community signals without copying posts,
+              and auto-publish only records with enough verification.
+            </p>
+          </div>
+          <div class="radar-grid" id="radar-grid"></div>
+          <div class="review-controls">
+            <label class="candidate-select">
+              <input id="radar-select-all" type="checkbox" />
+              <span>Select all visible candidates</span>
+            </label>
+            <div class="compare-bar hidden" id="radar-bulk-bar">
+              <span id="radar-bulk-copy">0 candidates selected</span>
+              <button id="radar-bulk-approve" class="primary-button" type="button">Bulk Approve</button>
+              <button id="radar-bulk-reject" class="secondary-button" type="button">Bulk Reject</button>
+            </div>
+          </div>
+          <div class="review-header">
+            <div>
+              <p class="eyebrow">Review queue</p>
+              <h2>Discovered Festival Candidates</h2>
+            </div>
+            <button id="reset-radar" class="secondary-button" type="button">Reset Queue</button>
+          </div>
+          <div class="candidate-grid" id="candidate-grid"></div>
+          <div class="review-header">
+            <div>
+              <p class="eyebrow">Audit trail</p>
+              <h2>Review Decisions</h2>
+            </div>
+          </div>
+          <div class="audit-list" id="radar-audit-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal-backdrop hidden" id="detail-modal" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+      <section class="detail-panel">
+        <button class="icon-button modal-close" id="detail-close" type="button" aria-label="Close details">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+        <div id="detail-content"></div>
+      </section>
+    </div>
+
+    <div class="modal-backdrop hidden" id="calendar-modal" role="dialog" aria-modal="true" aria-labelledby="calendar-title">
+      <section class="small-modal">
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow">Deadline export</p>
+            <h2 id="calendar-title">Add to Calendar</h2>
+          </div>
+          <button class="icon-button" id="calendar-close" type="button" aria-label="Close calendar options">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </div>
+        <div id="calendar-content"></div>
+      </section>
+    </div>
+
+    <div class="modal-backdrop hidden" id="submission-modal" role="dialog" aria-modal="true" aria-labelledby="submission-title">
+      <form class="small-modal" id="submission-form">
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow">Submission log</p>
+            <h2 id="submission-title">Track Submission</h2>
+          </div>
+          <button class="icon-button" id="submission-close" type="button" aria-label="Close submission form">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </div>
+        <input type="hidden" id="submission-festival-id" />
+        <label for="submission-film-title">Film title</label>
+        <input id="submission-film-title" type="text" placeholder="Your film title" />
+        <label for="submission-date">Submission date</label>
+        <input id="submission-date" type="date" />
+        <label for="submission-status">Status</label>
+        <select id="submission-status">
+          <option>Submitted</option>
+          <option>Pending</option>
+          <option>Accepted</option>
+          <option>Rejected</option>
+        </select>
+        <label for="submission-notes">Notes</label>
+        <textarea id="submission-notes" placeholder="Confirmation URL, fee notes, contact name, or reminders..."></textarea>
+        <button class="primary-button full-width" type="submit">Save Submission</button>
+      </form>
+    </div>
+
+    <div class="modal-backdrop hidden" id="review-modal" role="dialog" aria-modal="true" aria-labelledby="review-title">
+      <form class="small-modal review-modal" id="review-form">
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow">Radar review</p>
+            <h2 id="review-title">Edit Candidate Facts</h2>
+          </div>
+          <button class="icon-button" id="review-close" type="button" aria-label="Close review editor">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </div>
+        <input type="hidden" id="review-candidate-id" />
+        <div class="form-grid">
+          <div>
+            <label for="review-name">Festival name</label>
+            <input id="review-name" type="text" required />
+          </div>
+          <div>
+            <label for="review-deadline">Deadline</label>
+            <input id="review-deadline" type="datetime-local" required />
+          </div>
+          <div>
+            <label for="review-website">Website URL</label>
+            <input id="review-website" type="url" />
+          </div>
+          <div>
+            <label for="review-submission-url">Submission URL</label>
+            <input id="review-submission-url" type="url" />
+          </div>
+          <div>
+            <label for="review-entry-fee">Entry fee</label>
+            <input id="review-entry-fee" type="number" min="0" />
+          </div>
+          <div>
+            <label for="review-prize-money">Prize money</label>
+            <input id="review-prize-money" type="number" min="0" />
+          </div>
+          <div>
+            <label for="review-max-duration">Max runtime</label>
+            <input id="review-max-duration" type="number" min="1" />
+          </div>
+          <div>
+            <label for="review-formats">Formats</label>
+            <input id="review-formats" type="text" />
+          </div>
+        </div>
+
+        <label for="review-content-types">Content types</label>
+        <input id="review-content-types" type="text" />
+
+        <label for="review-description">Description</label>
+        <textarea id="review-description"></textarea>
+
+        <label for="review-fit">Suggested fit</label>
+        <textarea id="review-fit"></textarea>
+
+        <label for="review-signals">Extracted signals, one per line</label>
+        <textarea id="review-signals"></textarea>
+
+        <label for="review-warnings">Warning signals</label>
+        <input id="review-warnings" type="text" placeholder="noOrganizer, noVenue, vagueAwards" />
+
+        <div class="quality-grid" aria-label="Verified evidence">
+          <label><input id="review-organizer" type="checkbox" /> Named organizer verified</label>
+          <label><input id="review-venue" type="checkbox" /> Venue or online footprint verified</label>
+          <label><input id="review-rules" type="checkbox" /> Rules page verified</label>
+          <label><input id="review-social" type="checkbox" /> Social presence verified</label>
+          <label><input id="review-past-edition" type="checkbox" /> Past edition verified</label>
+          <label><input id="review-fees" type="checkbox" /> Fees transparent</label>
+          <label><input id="review-prize-details" type="checkbox" /> Prize details verified</label>
+        </div>
+
+        <label for="review-note">Audit note</label>
+        <textarea id="review-note" placeholder="What changed, what was verified, or what still needs checking."></textarea>
+        <button class="primary-button full-width" type="submit">Save Review Edits</button>
+      </form>
+    </div>
+
+    <script type="module" src="/app.js?v=pipeline-20260507-1"></script>
+  </body>
+</html>

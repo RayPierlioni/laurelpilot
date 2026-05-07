@@ -1,0 +1,40 @@
+{
+  "name": "LaurelPilot",
+  "short_name": "LaurelPilot",
+  "description": "Local-first AI film festival strategy desk for discovery, matching, prep packs, and submission tracking.",
+  "start_url": "/?view=onboarding",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#061527",
+  "theme_color": "#0a2746",
+  "orientation": "any",
+  "categories": ["productivity", "entertainment", "utilities"],
+  "icons": [
+    {
+      "src": "/assets/laurelpilot-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Start Setup",
+      "short_name": "Start",
+      "url": "/?view=onboarding",
+      "description": "Set up a film profile and review starter matches."
+    },
+    {
+      "name": "Strategy Tips",
+      "short_name": "Tips",
+      "url": "/?view=intelligence",
+      "description": "Open festival intelligence and submission strategy tips."
+    },
+    {
+      "name": "Data Vault",
+      "short_name": "Vault",
+      "url": "/?view=vault",
+      "description": "Export or restore the local LaurelPilot workspace."
+    }
+  ]
+}
