@@ -2268,7 +2268,7 @@ async function countCachedShellAssets() {
   if (!("caches" in window)) {
     return 0;
   }
-    const cache = await caches.open("laurelpilot-shell-v37");
+    const cache = await caches.open("laurelpilot-shell-v38");
   const matches = await Promise.all(
     APP_SHELL_ASSETS.map((asset) => cache.match(asset, { ignoreSearch: true }))
   );

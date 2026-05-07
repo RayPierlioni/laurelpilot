@@ -7221,3 +7221,150 @@ button:disabled {
     width: 100%;
   }
 }
+
+/* Live deploy QA: keep the premium hero inside every viewport. */
+#product-view,
+#product-view * {
+  min-width: 0;
+}
+
+.product-hero,
+.product-copy,
+.product-board,
+.board-row,
+.board-header {
+  max-width: 100%;
+}
+
+.product-copy h1 {
+  max-width: min(760px, 100%);
+  overflow-wrap: normal;
+  text-wrap: balance;
+}
+
+.product-board {
+  overflow: hidden;
+}
+
+.board-header {
+  flex-wrap: wrap;
+}
+
+.board-row {
+  grid-template-columns: 14px minmax(0, 1fr) auto;
+}
+
+.board-row strong,
+.board-row p,
+.board-header span,
+.board-header strong {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1023px) {
+  .product-hero {
+    width: 100%;
+    max-width: 100%;
+    gap: 20px;
+    padding: clamp(20px, 5vw, 38px) !important;
+  }
+
+  .product-board {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  html,
+  body,
+  .app-shell,
+  .main-content {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  #product-view {
+    --product-mobile-width: calc(100vw - 36px);
+    width: var(--product-mobile-width);
+    max-width: var(--product-mobile-width);
+    overflow: hidden;
+  }
+
+  #product-view .product-hero,
+  #product-view .product-copy,
+  #product-view .product-board,
+  #product-view .premium-grid,
+  #product-view .pricing-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  #product-view .product-copy,
+  #product-view .product-board {
+    justify-self: start;
+    max-width: min(100%, 304px) !important;
+  }
+
+  .product-hero {
+    padding: 28px 24px !important;
+  }
+
+  .product-copy {
+    padding: 18px 0 8px !important;
+  }
+
+  .hero-logo {
+    width: min(220px, 78%) !important;
+    margin-bottom: 20px;
+  }
+
+  .build-marker {
+    display: inline-flex;
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .product-copy h1 {
+    max-width: min(100%, 304px) !important;
+    font-size: clamp(31px, 8.8vw, 35px) !important;
+    line-height: 1.1 !important;
+    word-break: normal;
+    text-wrap: normal;
+  }
+
+  .product-copy p:not(.eyebrow) {
+    max-width: min(100%, 304px) !important;
+    font-size: 16px;
+    line-height: 1.58;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: min(100%, 304px);
+  }
+
+  .hero-actions button {
+    width: 100%;
+  }
+
+  .product-board {
+    padding: 22px !important;
+  }
+
+  .board-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .board-row {
+    grid-template-columns: 10px minmax(0, 1fr);
+  }
+
+  .board-row .mini-score {
+    grid-column: 2;
+    justify-self: start;
+    margin-top: 6px;
+  }
+}
